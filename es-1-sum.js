@@ -1,2 +1,2 @@
-const sum = 5 + 6
-console.log(sum)
+const sum = 5 + 6;
+console.log(sum);

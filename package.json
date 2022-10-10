@@ -4,7 +4,8 @@
   "description": "",
   "main": "es-1-sum.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write .",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,10 @@
   "homepage": "https://github.com/AliceStivali/node-exercises#readme",
   "dependencies": {
     "figlet": "^1.5.2"
+  },
+  "devDependencies": {
+    "jest": "^29.1.2",
+    "prettier": "2.7.1",
+    "supertest": "^6.3.0"
   }
 }

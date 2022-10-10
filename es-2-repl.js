@@ -1,5 +1,5 @@
-const crypto = require('crypto');
+const crypto = require("crypto");
 
-let uuid = crypto.randomUUID()
+let uuid = crypto.randomUUID();
 
-console.log(uuid)
+console.log(uuid);

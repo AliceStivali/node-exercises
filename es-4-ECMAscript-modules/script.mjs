@@ -1,4 +1,3 @@
 import outputMessage from "./outputMessage.mjs";
 
-
-outputMessage('Hi there!')
+outputMessage("Hi there!");

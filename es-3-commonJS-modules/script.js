@@ -1,4 +1,3 @@
 const outputMessage = require("./outputMessage");
 
-
-outputMessage('Hello there!')
+outputMessage("Hello there!");

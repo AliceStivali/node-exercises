@@ -1,5 +1,5 @@
 function outputMessage(message) {
-    console.log(`The message is: ${message}`)
+  console.log(`The message is: ${message}`);
 }
 
-export default outputMessage
+export default outputMessage;
