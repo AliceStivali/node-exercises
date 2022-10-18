@@ -11,4 +11,9 @@ app.get("/planets", async (request, response) => {
   response.json(planets);
 });
 
+app.post("/planets", async (request, response) => {
+  const planet = request.body;
+  response.status(201).json(planet);
+});
+
 export default app;

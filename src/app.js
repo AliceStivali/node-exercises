@@ -12,4 +12,8 @@ app.get("/planets", async (request, response) => {
     const planets = await client_1.default.planet.findMany();
     response.json(planets);
 });
+app.post("/planets", async (request, response) => {
+    const planet = request.body;
+    response.status(201).json(planet);
+});
 exports.default = app;
