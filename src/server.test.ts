@@ -216,3 +216,32 @@ describe("PUT /planets/:id", () => {
     expect(response.text).toContain("Cannot PUT /planet/asdf");
   });
 });
+
+describe("DELETE /planet/:id", () => {
+  test("Valid request", async () => {
+    const response = await request.delete("/planets/1").expect(204);
+
+    expect(response.text).toEqual("");
+  });
+
+  test("Planet does not exist", async () => {
+    //@ts-ignore
+    prismaMock.planet.delete.mockRejectedValue(new Error());
+
+    const response = await request
+      .delete("/planets/23")
+      .expect(404)
+      .expect("Content-Type", /text\/html/);
+
+    expect(response.text).toContain("Cannot DELETE /planet/23");
+  });
+
+  test("Invalid planet ID", async () => {
+    const response = await request
+      .delete("/planets/asdf")
+      .expect(404)
+      .expect("Content-Type", /text\/html/);
+
+    expect(response.text).toContain("Cannot DELETE /planet/asdf");
+  });
+});
