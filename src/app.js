@@ -5,10 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("express-async-errors");
+const cors_1 = __importDefault(require("cors"));
 const client_1 = __importDefault(require("./lib/prisma/client"));
 const validation_1 = require("./lib/validation");
+const corsOptions = {
+    origin: "http://localhost:8080",
+};
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cors_1.default)(corsOptions));
 app.get("/planets", async (request, response) => {
     const planets = await client_1.default.planet.findMany();
     response.json(planets);
