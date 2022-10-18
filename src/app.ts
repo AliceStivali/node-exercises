@@ -4,6 +4,8 @@ import prisma from "./lib/prisma/client";
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/planets", async (request, response) => {
   const planets = await prisma.planet.findMany();
   response.json(planets);
