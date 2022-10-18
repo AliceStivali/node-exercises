@@ -50,6 +50,9 @@ describe("POST /planets", () => {
       moons: 12,
     };
 
+    //@ts-ignore
+    prismaMock.planet.create.mockResolvedValue(planet);
+
     const response = await request
       .post("/planets")
       .send(planet)
