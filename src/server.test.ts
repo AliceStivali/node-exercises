@@ -42,6 +42,51 @@ describe("GET /planets", () => {
   });
 });
 
+describe("GET /planet/:id", () => {
+  test("Valid request", async () => {
+    const planet = {
+      id: 1,
+      name: "Mercury",
+      description: null,
+      diameter: 1234,
+      moons: 12,
+      createdAt: "2022-10-15T15:27:06.290Z",
+      updatedAt: "2022-10-15T15:25:59.791Z",
+    };
+
+    //@ts-ignore
+    prismaMock.planet.findUnique.mockResolvedValue(planet);
+
+    const response = await request
+      .get("/planets/1")
+      .expect(200)
+      .expect("Content-Type", /application\/json/);
+
+    expect(response.body).toEqual(planet);
+  });
+
+  test("Planet does not exist", async () => {
+    //@ts-ignore
+    prismaMock.planet.findUnique.mockResolvedValue(null);
+
+    const response = await request
+      .get("/planets/23")
+      .expect(404)
+      .expect("Content-Type", /text\/html/);
+
+    expect(response.text).toContain("Cannot GET /planet/23");
+  });
+
+  test("Invalid planet ID", async () => {
+    const response = await request
+      .get("/planets/asdf")
+      .expect(404)
+      .expect("Content-Type", /text\/html/);
+
+    expect(response.text).toContain("Cannot GET /planet/asdf");
+  });
+});
+
 describe("POST /planets", () => {
   test("Valid request", async () => {
     const planet = {
