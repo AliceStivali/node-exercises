@@ -10,4 +10,4 @@ export const planetSchema = Type.Object(
   { additionalProperties: false }
 );
 
-export type PlanetData = Static<typeof planetSchema>;
+export type PlanetType = Static<typeof planetSchema>;
